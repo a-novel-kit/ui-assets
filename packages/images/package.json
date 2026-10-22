@@ -1,0 +1,26 @@
+{
+  "name": "@a-novel-kit/ui-images",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Generated logo banners and application icons, in dark and light modes, for web interfaces",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-novel-kit/ui-assets.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./files/*": "./files/*"
+  },
+  "files": [
+    "files",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "true"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
