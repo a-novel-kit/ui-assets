@@ -1,0 +1,50 @@
+{
+  "name": "ui-assets-project",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-novel-kit/ui-assets.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    ".",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:ci": "pnpm build && pnpm publish -r --dry-run --access public --no-git-checks",
+    "format": "prettier --write . --config prettier.config.ts",
+    "generate:images": "node scripts/generate-images.mjs",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "pnpm lint:generated && pnpm lint:stylecheck && pnpm lint:eslint",
+    "lint:ci": "pnpm lint",
+    "lint:eslint": "eslint .",
+    "lint:generated": "node scripts/generate-images.mjs --check",
+    "lint:stylecheck": "prettier --check . --config prettier.config.ts"
+  },
+  "devDependencies": {
+    "@a-novel-kit/nodelib-config": "^2.0.0",
+    "@eslint/config-helpers": "^0.7.0",
+    "@eslint/js": "^10.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.0.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-packagejson": "^3.0.0",
+    "sharp": "0.35.5",
+    "typescript": "^6.0.0",
+    "typescript-eslint": "^8.38.0"
+  },
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=10.9.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

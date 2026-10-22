@@ -1,0 +1,9 @@
+gitChecks: false
+autoInstallPeers: true
+packages:
+  - packages/*
+minimumReleaseAgeExclude:
+  - "@a-novel-kit/*"
+allowBuilds:
+  "@swc/core": true
+  esbuild: true
