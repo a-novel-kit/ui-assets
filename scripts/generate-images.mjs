@@ -3,6 +3,7 @@
 import { existsSync } from "node:fs";
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve, sep } from "node:path";
+import { parseArgs } from "node:util";
 
 import sharp from "sharp";
 
@@ -36,12 +37,7 @@ const variants = {
   "light-white": "-light-white",
 };
 
-const argumentsList = process.argv.slice(2);
-const checkOnly = argumentsList.length === 1 && argumentsList[0] === "--check";
-
-if (argumentsList.length > 0 && !checkOnly) {
-  throw new Error("Usage: node scripts/generate-images.mjs [--check]");
-}
+const { values: options } = parseArgs({ options: { check: { type: "boolean", default: false } } });
 
 const portablePath = (path) => relative(repositoryRoot, path).split(sep).join("/");
 
@@ -96,13 +92,13 @@ async function generateImages() {
     }
   }
 
-  const contents = await Promise.all(renders.map(({ sourcePath, size }) => render(sourcePath, size)));
-  return new Map(renders.map(({ target }, index) => [target, contents[index]]));
+  const entries = renders.map(async ({ target, sourcePath, size }) => [target, await render(sourcePath, size)]);
+  return new Map(await Promise.all(entries));
 }
 
 const outputs = await generateImages();
 
-if (checkOnly) {
+if (options.check) {
   const issues = [];
 
   for (const [path, expected] of outputs) {
