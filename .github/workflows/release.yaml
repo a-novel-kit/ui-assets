@@ -92,8 +92,8 @@ jobs:
     environment:
       name: governance
       deployment: false
-    permissions:
-      contents: read
+    # archive-board-items mints its own App token and never reads the job token.
+    permissions: {}
     steps:
       - uses: a-novel-kit/workflows/generic-actions/archive-board-items@v1.81.3
         with:
