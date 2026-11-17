@@ -25,10 +25,10 @@ Files follow `files/banner/{height}h/{logo}-banner{variant}.png` and
 | `-light`       | Light | Transparent |
 | `-light-white` | Light | White       |
 
-Banner files are available at heights from 80 to 960 pixels and keep each logo's aspect ratio. For a
+Banner files are available at heights of 80, 160, 240 and 960 pixels and keep each logo's aspect ratio. For a
 banner displayed at a fixed height, the height directories map to `srcset` density descriptors: at 80
 CSS pixels, `80h` is `1x`, `160h` is `2x`, and `240h` is `3x`. Icon files cover browser, PWA, and app
-surfaces from 16×16 through 1024×1024 pixels.
+surfaces from 32×32 through 1024×1024 pixels.
 
 Use meaningful alternative text when the logo contributes content. Use an empty `alt` when the
 surrounding interface already names the product.
