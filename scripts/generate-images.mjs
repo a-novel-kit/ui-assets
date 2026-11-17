@@ -19,11 +19,11 @@ const sourceHeight = 1792;
 
 const presets = {
   banner: {
-    sizes: [80, 160, 240, 320, 480, 640, 960].map((height) => ({ height })),
+    sizes: [80, 160, 240, 960].map((height) => ({ height })),
     source: "wordmark",
   },
   icon: {
-    sizes: [16, 32, 48, 96, 144, 192, 512, 1024].map((size) => ({ height: size, width: size })),
+    sizes: [32, 48, 96, 192, 512, 1024].map((size) => ({ height: size, width: size })),
     source: "icon",
   },
 };

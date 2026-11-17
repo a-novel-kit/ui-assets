@@ -1,0 +1,18 @@
+# Upgrading to NEXT
+
+The images package stops publishing five sizes nothing used, which shrinks every release from about 11 MB to 6.4 MB.
+
+## Do I need to act?
+
+**Required only if you import a 320h, 480h or 640h banner, or a 16x16 or 144x144 icon.** No A-Novel repository does.
+An import of a removed file fails the build.
+
+## Import a kept size
+
+The banners keep 80h, 160h, 240h and 960h; the icons keep 32x32, 48x48, 96x96, 192x192, 512x512 and 1024x1024. Take
+the nearest one:
+
+```diff
+-import bannerUrl from "@a-novel-kit/ui-images/files/banner/320h/agora-banner.png";
++import bannerUrl from "@a-novel-kit/ui-images/files/banner/240h/agora-banner.png";
+```
